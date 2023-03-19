@@ -478,4 +478,5 @@ const accessories = [
 
 module.exports = {
   guitars,
+  accessories,
 };
