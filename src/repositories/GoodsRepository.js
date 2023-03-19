@@ -1,8 +1,13 @@
-const { GuitarModel } = require("../models");
+const { GuitarModel, AccessoryModel } = require("../models");
 
 class GoodsRepository {
   async getAllGoods() {
-    return GuitarModel.findAll();
+    const guitars = await GuitarModel.findAll();
+    const accessories = await AccessoryModel.findAll();
+    return {
+      guitars,
+      accessories,
+    };
   }
 }
 
