@@ -1,9 +1,19 @@
 const { GuitarModel, AccessoryModel } = require("../models");
 
 class GoodsRepository {
-  async getAllGoods() {
-    const guitars = await GuitarModel.findAll();
-    const accessories = await AccessoryModel.findAll();
+  async getAllGoods(category) {
+    let guitars = [];
+    let accessories = [];
+
+    if (category === "all") {
+      guitars = await GuitarModel.findAll();
+      accessories = await AccessoryModel.findAll();
+    } else if (category === "аксессуары") {
+      accessories = await AccessoryModel.findAll();
+    } else {
+      guitars = await GuitarModel.findAll({ where: { category } });
+    }
+
     return {
       guitars,
       accessories,
