@@ -16,6 +16,10 @@ module.exports = db.define("Accessory", {
     type: DataTypes.STRING,
     allowNull: false,
   },
+  type: {
+    type: DataTypes.STRING,
+    allowNull: false,
+  },
   price: {
     type: DataTypes.DOUBLE,
     allowNull: false,
