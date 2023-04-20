@@ -76,6 +76,26 @@ class GoodsRepository {
       accessories,
     };
   }
+
+  async getProductByVendorCode(vendorCode) {
+    let product;
+
+    if (vendorCode < 500) {
+      product = await GuitarModel.findOne({
+        where: {
+          vendorCode,
+        },
+      });
+    } else {
+      product = await AccessoryModel.findOne({
+        where: {
+          vendorCode,
+        },
+      });
+    }
+
+    return product;
+  }
 }
 
 module.exports = new GoodsRepository();
