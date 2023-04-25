@@ -6,10 +6,14 @@ class GoodsController {
     res.json(goods);
   }
   async getProduct(req, res) {
-    const product = await GoodsRepository.getProductByVendorCode(
-      req.query.vendorCode
-    );
-    res.json(product);
+    try {
+      const product = await GoodsRepository.getProductByVendorCode(
+        req.query.vendorCode
+      );
+      res.json(product);
+    } catch (error) {
+      res.json(null);
+    }
   }
 }
 
