@@ -20,6 +20,18 @@ class CartRepository {
       image: product.image,
     });
   }
+
+  async changeItemQuantity(vendorCode, userId, quantity) {
+    await CartItemModel.update(
+      { quantity },
+      {
+        where: {
+          UserId: userId,
+          vendorCode,
+        },
+      }
+    );
+  }
 }
 
 module.exports = new CartRepository();

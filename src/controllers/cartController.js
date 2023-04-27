@@ -14,6 +14,13 @@ class CartController {
     await CartRepository.addCartItem(vendorCode, id);
     res.json("ok");
   }
+
+  async changeItemQuantity(req, res) {
+    const { vendorCode, quantity } = req.body;
+    const { id } = getTokenData(req.headers.authorization);
+    await CartRepository.changeItemQuantity(vendorCode, id, quantity);
+    res.json("ok");
+  }
 }
 
 module.exports = new CartController();

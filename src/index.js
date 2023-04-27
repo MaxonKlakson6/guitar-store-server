@@ -3,7 +3,7 @@ require("dotenv").config();
 const cors = require("cors");
 
 const db = require("./database");
-const { UserModel } = require("./models");
+require("./models");
 const router = require("./routes");
 
 const app = express();
@@ -25,5 +25,4 @@ const startApplication = async () => {
     console.log(error);
   }
 };
-
 startApplication();
