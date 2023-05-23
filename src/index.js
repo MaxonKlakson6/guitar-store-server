@@ -5,6 +5,7 @@ const cors = require("cors");
 const db = require("./database");
 require("./models");
 const router = require("./routes");
+const load = require("./helpers/loadMockToDatabase");
 
 const app = express();
 

@@ -7,30 +7,55 @@ class CartRepository {
       where: {
         UserId: userId,
       },
+      order: [["createdAt", "ASC"]],
+    });
+  }
+
+  async getCartItemByVendorCode(vendorCode, UserId) {
+    return CartItemModel.findOne({
+      where: {
+        vendorCode,
+        UserId,
+      },
     });
   }
 
   async addCartItem(vendorCode, userId) {
     const product = await GoodsRepository.getProductByVendorCode(vendorCode);
-    CartItemModel.create({
-      UserId: userId,
-      vendorCode: product.vendorCode,
-      price: product.price,
-      name: product.name,
-      image: product.image,
-    });
+    const cartItem = await this.getCartItemByVendorCode(vendorCode, userId);
+
+    if (cartItem) {
+      this.changeItemQuantity(vendorCode, userId, cartItem.quantity + 1);
+    } else {
+      CartItemModel.create({
+        UserId: userId,
+        vendorCode: product.vendorCode,
+        price: product.price,
+        name: product.name,
+        image: product.image,
+      });
+    }
   }
 
   async changeItemQuantity(vendorCode, userId, quantity) {
-    await CartItemModel.update(
-      { quantity },
-      {
+    if (quantity <= 0) {
+      await CartItemModel.destroy({
         where: {
-          UserId: userId,
           vendorCode,
+          UserId: userId,
         },
-      }
-    );
+      });
+    } else {
+      await CartItemModel.update(
+        { quantity },
+        {
+          where: {
+            UserId: userId,
+            vendorCode,
+          },
+        }
+      );
+    }
   }
 }
 
