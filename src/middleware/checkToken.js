@@ -3,7 +3,6 @@ const getTokenData = require("../helpers/getTokenData");
 
 module.exports = async (req, res, next) => {
   try {
-    console.log(req.headers.authorization);
     const tokenData = getTokenData(req.headers.authorization);
     const user = await UserRepository.findUserById(tokenData.id);
     if (!user) {

@@ -5,4 +5,6 @@ module.exports = {
   CART: "/cart",
   CART_ADD: "/cart/add",
   CHANGE_ITEM_QUANTITY: "/cart/change",
+  FAVOURITE: "/favourite",
+  TOGGLE_FAVOURITE: "/favourite/toggle",
 };
