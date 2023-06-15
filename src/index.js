@@ -22,8 +22,6 @@ const startApplication = async () => {
     app.listen(PORT, () => {
       console.log(`Server is running on port - ${PORT}`);
     });
-    // const users = await UserModel.findAll();
-    // console.log(users.length);
   } catch (error) {
     console.log(error);
   }
