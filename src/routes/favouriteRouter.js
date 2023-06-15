@@ -8,6 +8,7 @@ const favouriteRouter = new Router();
 
 favouriteRouter.get(
   routeNames.FAVOURITE,
+  checkToken,
   favouriteController.getFavouriteItems
 );
 

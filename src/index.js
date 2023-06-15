@@ -3,7 +3,7 @@ require("dotenv").config();
 const cors = require("cors");
 
 const db = require("./database");
-require("./models");
+const { UserModel } = require("./models");
 const router = require("./routes");
 const load = require("./helpers/loadMockToDatabase");
 
@@ -22,6 +22,8 @@ const startApplication = async () => {
     app.listen(PORT, () => {
       console.log(`Server is running on port - ${PORT}`);
     });
+    // const users = await UserModel.findAll();
+    // console.log(users.length);
   } catch (error) {
     console.log(error);
   }

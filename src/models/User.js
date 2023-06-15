@@ -20,8 +20,19 @@ module.exports = db.define("User", {
   email: {
     type: DataTypes.STRING,
   },
+  deliveryAddress: {
+    type: DataTypes.TEXT,
+    defaultValue: "",
+  },
+  secondDeliveryAddress: {
+    type: DataTypes.TEXT,
+    defaultValue: "",
+  },
   isRegistered: {
     type: DataTypes.BOOLEAN,
     defaultValue: false,
+  },
+  password: {
+    type: DataTypes.STRING,
   },
 });
