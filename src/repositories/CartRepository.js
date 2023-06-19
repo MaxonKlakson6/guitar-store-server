@@ -57,6 +57,12 @@ class CartRepository {
       );
     }
   }
+  async clearCart(UserId) {
+    await CartItemModel.destroy({
+      where: { UserId },
+      truncate: true,
+    });
+  }
 }
 
 module.exports = new CartRepository();

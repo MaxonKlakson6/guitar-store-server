@@ -41,7 +41,7 @@ class UserController {
     const { fieldName, value } = req.body;
     const { id } = getTokenData(req.headers.authorization);
     await UserRepository.updateUserField(fieldName, value, id);
-    res.json("ok");
+    res.json("Данные были изменены");
   }
 }
 

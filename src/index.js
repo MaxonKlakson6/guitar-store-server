@@ -3,9 +3,8 @@ require("dotenv").config();
 const cors = require("cors");
 
 const db = require("./database");
-const { UserModel } = require("./models");
+require("./models");
 const router = require("./routes");
-const load = require("./helpers/loadMockToDatabase");
 
 const app = express();
 

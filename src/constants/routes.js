@@ -11,4 +11,6 @@ module.exports = {
   CHANGE_ITEM_QUANTITY: "/cart/change",
   FAVOURITE: "/favourite",
   TOGGLE_FAVOURITE: "/favourite/toggle",
+  MAKE_ORDER: "/order",
+  GET_ORDERS: "/order",
 };
